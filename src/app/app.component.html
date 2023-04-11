@@ -1,0 +1,22 @@
+<app-header></app-header>
+<div>
+    <header>
+        Chercher : <input type="text" id="search" name="search" [(ngModel)]="search" />
+        <div>
+            la recherche est : {{ search }}
+        </div>
+    </header>
+</div>
+<div>
+<h2>Sort by</h2>
+    <select [(ngModel)]="sort">
+        <option value="sortByNameListAsc">Sort by name asc</option>
+        <option value="sortByNameListDesc">Sort by name desc</option>
+        <option value="sortByDate">Sort by date</option>
+    </select>
+</div>
+<div>
+    <app-product-card *ngFor="let product of (products | sortByNameList: sort| sortByName: search)" [myProduct]="product">
+    </app-product-card>
+</div>
+    <app-footer></app-footer>

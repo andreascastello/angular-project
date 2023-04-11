@@ -1,0 +1,19 @@
+<div class="product-card">
+    <h2>{{myProduct.title | uppercase}}</h2>
+    <img src={{myProduct.imageUrl}} alt="product image">
+    <p>{{myProduct.description}}</p>
+    <p *ngIf="myProduct.uiPrice">Plusieurs tailles disponibles</p>
+    <select (change)="onChangeObj($event)">
+        <option *ngFor="let curr of myProduct.uiPrice" [value]="curr.price">{{curr.size}}</option>
+    </select>
+    <div class="price-likes">
+        <div class="product-price"><b>Price:</b> {{selectedDeviceObj | currency: 'EUR'}}</div>
+        <div class="product-likes">
+            <b>{{myProduct.likes}}</b>
+            <br>
+            <button (click)="onAddLike()">Like</button>
+            <br>
+            <span>{{myProduct.dateAdded | date:'fullDate':'+0200':'fr'}}</span>
+        </div>
+    </div>
+</div>
